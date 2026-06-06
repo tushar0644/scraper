@@ -3,546 +3,194 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aaagaaz 4.0 - Event Management Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Aaagaaz 4.0 - Campaign Registration</title>
+  <link rel="stylesheet" href="login.css">
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="main-app-container">
     
-    <!-- Mobile Sidebar Backdrop Overlay -->
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <!-- Page Header -->
+    <header class="page-header">
+      <h1 class="page-title">Campaign Registration</h1>
+      <p class="page-subtitle">Please complete the form below.</p>
+    </header>
 
-    <!-- Fixed Left Sidebar -->
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-logo">
-        Aaagaaz 4.0
-      </div>
+    <form id="campaignForm" novalidate>
       
-      <ul class="sidebar-menu">
-        <!-- Dashboard Menu Item -->
-        <li class="menu-item">
-          <button class="menu-link active" data-page="dashboard">
-            <!-- Monitor Dashboard Icon -->
-            <svg viewBox="0 0 24 24" width="20" height="20">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-              <line x1="2" y1="10" x2="22" y2="10"></line>
-              <line x1="10" y1="10" x2="10" y2="17"></line>
-            </svg>
-            <span>Dashboard</span>
-          </button>
-        </li>
-
-        <!-- Finale Registrations Expandable Accordion Menu Item -->
-        <li class="menu-item menu-accordion" id="finaleAccordion">
-          <button class="menu-link accordion-toggle" id="accordionToggleBtn">
-            <div class="accordion-toggle-content">
-              <!-- User Outline Icon -->
-              <svg viewBox="0 0 24 24" width="20" height="20">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-              <span>Finale Registrations</span>
-            </div>
-            <!-- Arrow Chevron Up/Down Icon -->
-            <svg class="accordion-chevron" viewBox="0 0 24 24" width="16" height="16">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-
-          <!-- Accordion Submenu -->
-          <ul class="submenu">
-            <li>
-              <button class="menu-link" data-page="registrations">
-                Registrations
-              </button>
-            </li>
-            <li>
-              <button class="menu-link" data-page="invite-user-list">
-                Invite User List
-              </button>
-            </li>
-            <li>
-              <button class="menu-link" data-page="rejected-user-list">
-                Rejected User List
-              </button>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Login Analytics Menu Item -->
-        <li class="menu-item">
-          <button class="menu-link" data-page="login-analytics">
-            <!-- Key/Shield Icon -->
-            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              <circle cx="12" cy="11" r="3"></circle>
-              <line x1="12" y1="14" x2="12" y2="18"></line>
-            </svg>
-            <span>Login Analytics</span>
-          </button>
-        </li>
-      </ul>
-      
-      <!-- Decorative platform indicator -->
-      <div class="footer-text">
-        Admin Console v4.0.0
-      </div>
-    </aside>
-
-    <!-- Right-Side Main Content Area -->
-    <div class="main-wrapper">
-      
-      <!-- Top Sticky Navigation Header -->
-      <header class="top-header">
-        <button class="burger-btn" id="burgerToggle" aria-label="Toggle Navigation Sidebar">
-          <!-- Hamburger Menu Icon -->
-          <svg viewBox="0 0 24 24" width="24" height="24">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-
-        <div class="header-actions">
-          <!-- Profile Badge -->
-          <div class="profile-avatar" title="Administrator Profile">
-            A
-          </div>
-        </div>
-      </header>
-
-      <!-- Dynamic Page Container -->
-      <main class="content-area">
+      <!-- 1. PHONE VERIFICATION SECTION -->
+      <section class="form-section-card" id="phoneVerificationCard">
+        <h2 class="section-title">Phone Verification</h2>
         
-        <!-- DASHBOARD PAGE SECTION -->
-        <section id="page-dashboard" class="page-section active">
-          <div class="page-header">
-            <h1 class="page-title">Dashboard</h1>
-          </div>
-          
-          <div class="dashboard-grid">
-            <!-- Empty Cards / Container Placeholders -->
-            <div class="card-placeholder">
-              <div class="card-icon-placeholder">
-                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-              </div>
-              <div class="card-line-sm"></div>
-              <div class="card-line-lg"></div>
-            </div>
-
-            <div class="card-placeholder success">
-              <div class="card-icon-placeholder">
-                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                </svg>
-              </div>
-              <div class="card-line-sm"></div>
-              <div class="card-line-lg"></div>
-            </div>
-
-            <div class="card-placeholder danger">
-              <div class="card-icon-placeholder">
-                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="15" y1="9" x2="9" y2="15"></line>
-                  <line x1="9" y1="9" x2="15" y2="15"></line>
-                </svg>
-              </div>
-              <div class="card-line-sm"></div>
-              <div class="card-line-lg"></div>
-            </div>
-          </div>
-        </section>
-
-        <!-- REGISTRATIONS PAGE SECTION -->
-        <section id="page-registrations" class="page-section">
-          <div class="breadcrumb-container">
-            <h1 class="page-title">All Registrations</h1>
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#" data-page="dashboard">Dashboard</a></li>
-              <li class="breadcrumb-separator">/</li>
-              <li class="breadcrumb-item active">All Registrations</li>
-            </ul>
-          </div>
-
-          <!-- Top Filter Section -->
-          <div class="filter-card">
-            <form id="filterForm">
-              <div class="filter-grid">
-                
-                <!-- Registration Date Range -->
-                <div class="filter-field">
-                  <label class="filter-label">Registration Date Range</label>
-                  <div class="date-range-inputs">
-                    <input type="date" class="input-control" id="filterFromDate" placeholder="From">
-                    <span class="range-separator">to</span>
-                    <input type="date" class="input-control" id="filterToDate" placeholder="To">
-                  </div>
-                </div>
-
-                <!-- Gender Dropdown -->
-                <div class="filter-field">
-                  <label class="filter-label">Gender</label>
-                  <select class="input-control" id="filterGender">
-                    <option value="" selected>Select Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-
-                <!-- City Dropdown (Searchable Select) -->
-                <div class="filter-field">
-                  <label class="filter-label">City</label>
-                  <div class="searchable-select" id="cityFilter">
-                    <div class="select-trigger" id="cityFilterTrigger">Select City</div>
-                    <div class="select-dropdown">
-                      <div class="select-search-container">
-                        <input type="text" class="select-search-input" id="cityFilterSearch" placeholder="Search city...">
-                      </div>
-                      <ul class="select-options-list" id="cityFilterOptions">
-                        <!-- Populated by Javascript -->
-                      </ul>
-                    </div>
-                    <input type="hidden" id="cityFilterValue" value="">
-                  </div>
-                </div>
-
-                <!-- Age Filter -->
-                <div class="filter-field">
-                  <label class="filter-label">Age Filter (18 - 36)</label>
-                  <div class="age-range-inputs">
-                    <input type="number" class="input-control" id="filterMinAge" min="18" max="36" placeholder="Min">
-                    <span class="range-separator">to</span>
-                    <input type="number" class="input-control" id="filterMaxAge" min="18" max="36" placeholder="Max">
-                  </div>
-                  <div class="validation-error-text" id="filterAgeValidationError">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                    <span>Age must be between 18 and 36 years old.</span>
-                  </div>
-                </div>
-
-                <!-- Search Field -->
-                <div class="filter-field">
-                  <label class="filter-label">Search By Name</label>
-                  <input type="text" class="input-control" id="filterSearchName" placeholder="Search By Name">
-                </div>
-
-              </div>
-
-              <!-- Submit Button -->
-              <div class="filter-actions">
-                <button type="submit" class="btn-primary">Submit</button>
-              </div>
-            </form>
-          </div>
-
-          <!-- Statistics & Export Bar Section -->
-          <div class="stats-bar-card">
-            <div class="stats-bar-title">
-              Total Registrations : <span id="totalRegistrationsCount">0</span>
-            </div>
-            <div class="stats-bar-actions">
-              <button class="btn-secondary" id="exportExcelBtn">
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                Export Excel
-              </button>
-              <button class="btn-primary" id="openAddModalBtn">
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                Add Registration
-              </button>
-            </div>
-          </div>
-
-          <!-- Data Table Card -->
-          <div class="table-card">
-            <div class="table-responsive">
-              <table class="custom-table" id="registrationsTable">
-                <thead>
-                  <tr>
-                    <th class="sortable-header" data-sort="no">No <span class="sort-indicator">⇅</span></th>
-                    <th class="sortable-header" data-sort="gender">Gender <span class="sort-indicator">⇅</span></th>
-                    <th class="sortable-header" data-sort="name">Name <span class="sort-indicator">⇅</span></th>
-                    <th>Instagram Link</th>
-                    <th class="sortable-header" data-sort="city">City <span class="sort-indicator">⇅</span></th>
-                    <th class="sortable-header" data-sort="dob">DOB <span class="sort-indicator">⇅</span></th>
-                    <th class="sortable-header" data-sort="age">Age <span class="sort-indicator">⇅</span></th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="tableBodyRegistrations">
-                  <!-- Empty body row to contain empty state -->
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Empty State Container -->
-            <div class="table-empty-state" id="emptyStateRegistrations">
-              <div class="empty-state-icon">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="9" y1="15" x2="15" y2="15"></line>
-                  <line x1="9" y1="19" x2="15" y2="19"></line>
-                  <line x1="9" y1="11" x2="11" y2="11"></line>
-                </svg>
-              </div>
-              <h3 class="empty-title">No registrations found</h3>
-              <p class="empty-subtitle">Currently, there are no registration records. Click "Add Registration" to submit a mock entry.</p>
-            </div>
-
-            <!-- Table Pagination Layout -->
-            <div class="table-footer">
-              <div class="pagination-text" id="paginationText">
-                Showing 0 to 0 of 0 entries
-              </div>
-              <div class="pagination-controls" id="paginationControls">
-                <button class="page-btn" id="prevPageBtn" disabled>Previous</button>
-                <button class="page-btn active">1</button>
-                <button class="page-btn" id="nextPageBtn" disabled>Next</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- INVITE USER LIST PAGE SECTION -->
-        <section id="page-invite-user-list" class="page-section">
-          <div class="page-header">
-            <h1 class="page-title">Invite User List</h1>
-          </div>
-
-          <div class="table-card">
-            <div class="table-responsive">
-              <table class="custom-table">
-                <thead>
-                  <tr>
-                    <th>User Name</th>
-                    <th>Phone Number</th>
-                    <th>Email Address</th>
-                    <th>Invitation Code</th>
-                    <th>Sent Date</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="tableBodyInviteList">
-                  <!-- Empty body -->
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Empty State Container -->
-            <div class="table-empty-state" id="emptyStateInviteList">
-              <div class="empty-state-icon">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-              </div>
-              <h3 class="empty-title">No invited users</h3>
-              <p class="empty-subtitle">Users who have been invited to participate will be listed here. The list is currently empty.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- REJECTED USER LIST PAGE SECTION -->
-        <section id="page-rejected-user-list" class="page-section">
-          <div class="page-header">
-            <h1 class="page-title">Rejected User List</h1>
-          </div>
-
-          <div class="table-card">
-            <div class="table-responsive">
-              <table class="custom-table">
-                <thead>
-                  <tr>
-                    <th>User Name</th>
-                    <th>Phone Number</th>
-                    <th>Instagram Reel Link</th>
-                    <th>Reason for Rejection</th>
-                    <th>Rejection Date</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="tableBodyRejectedList">
-                  <!-- Empty body -->
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Empty State Container -->
-            <div class="table-empty-state" id="emptyStateRejectedList">
-              <div class="empty-state-icon">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="15" y1="9" x2="9" y2="15"></line>
-                  <line x1="9" y1="9" x2="15" y2="15"></line>
-                </svg>
-              </div>
-              <h3 class="empty-title">No rejected users</h3>
-              <p class="empty-subtitle">Users whose registrations were rejected will appear here. No submissions have been rejected yet.</p>
-            </div>
-          </div>
-        </section>
-
-        <!-- LOGIN ANALYTICS PAGE SECTION -->
-        <section id="page-login-analytics" class="page-section">
-          <div class="breadcrumb-container">
-            <h1 class="page-title">Login Analytics</h1>
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#" data-page="dashboard">Dashboard</a></li>
-              <li class="breadcrumb-separator">/</li>
-              <li class="breadcrumb-item active">Login Analytics</li>
-            </ul>
-          </div>
-
-          <!-- Statistics bar -->
-          <div class="stats-bar-card">
-            <div class="stats-bar-title">
-              Active Users Today : <span id="activeLoginsCount">0</span>
-            </div>
-            <div class="stats-bar-actions">
-              <button class="btn-secondary" id="exportLoginExcelBtn">
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                Export Log
-              </button>
-            </div>
-          </div>
-
-          <div class="table-card">
-            <div class="table-responsive">
-              <table class="custom-table">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Mobile Number</th>
-                    <th>OTP Verified</th>
-                    <th>Login Status</th>
-                    <th>Login Time</th>
-                    <th>Last Active</th>
-                    <th>Device Info</th>
-                  </tr>
-                </thead>
-                <tbody id="tableBodyLoginAnalytics">
-                  <!-- Empty body -->
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Empty State Container -->
-            <div class="table-empty-state" id="emptyStateLoginAnalytics">
-              <div class="empty-state-icon">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                  <circle cx="12" cy="11" r="3"></circle>
-                  <line x1="12" y1="14" x2="12" y2="18"></line>
-                </svg>
-              </div>
-              <h3 class="empty-title">No login logs recorded</h3>
-              <p class="empty-subtitle">Internal platform login tracking metrics and verification sessions will be cataloged here automatically after integration.</p>
-            </div>
-          </div>
-        </section>
-
-      </main>
-    </div>
-  </div>
-
-  <!-- Add New Registration Modal Dialog -->
-  <div class="modal-overlay" id="addModalOverlay">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h2 class="modal-title">Add New Registration</h2>
-        <button class="modal-close" id="closeModalBtn" aria-label="Close Modal">
-          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-      </div>
-      <form id="addRegistrationForm" novalidate>
-        <div class="modal-body">
-          <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="phoneInput">Phone Number</label>
+          <div class="phone-input-row">
+            <span class="phone-prefix-badge">+91</span>
             
-            <!-- User Name -->
-            <div class="filter-field form-full">
-              <label class="filter-label">User Name *</label>
-              <input type="text" class="input-control" id="addName" required placeholder="Enter full name">
+            <input 
+              type="tel" 
+              id="phoneInput" 
+              class="input-field" 
+              placeholder="98765 43210" 
+              maxlength="10" 
+              inputmode="numeric" 
+              pattern="[0-9]*"
+              required
+            >
+            
+            <button type="button" class="btn-action" id="sendOtpBtn">
+              <span class="spinner"></span>
+              <span class="btn-text" id="sendOtpText">Send OTP</span>
+            </button>
+
+            <span class="verified-badge" id="phoneVerifiedBadge">
+              ✓ Verified
+            </span>
+          </div>
+          <div class="field-error-text" id="phoneInputError"></div>
+        </div>
+
+        <!-- Dynamic OTP Verification Box -->
+        <div class="otp-input-block" id="otpInputBlock">
+          <label class="form-label" for="otpInput">Enter OTP</label>
+          <div class="otp-row">
+            <input 
+              type="text" 
+              id="otpInput" 
+              class="otp-number-input" 
+              placeholder="0000" 
+              maxlength="4" 
+              inputmode="numeric" 
+              pattern="[0-9]*" 
+              required
+            >
+            <button type="button" class="btn-action btn-secondary" id="verifyOtpBtn" disabled>
+              <span class="spinner"></span>
+              <span class="btn-text">Verify</span>
+            </button>
+          </div>
+          <div class="field-error-text" id="otpInputError"></div>
+        </div>
+      </section>
+
+      <!-- 2. PERSONAL DETAILS (LOCKED BY DEFAULT) -->
+      <section class="form-section-card form-locked" id="personalDetailsCard">
+        <h2 class="section-title">Personal Details</h2>
+        
+        <div class="form-grid-2">
+          
+          <!-- Full Name -->
+          <div class="form-group form-full-width">
+            <label class="form-label" for="userName">Full Name <span class="required-star">*</span></label>
+            <input 
+              type="text" 
+              id="userName" 
+              class="input-field" 
+              placeholder="e.g. Priya Sharma" 
+              required
+            >
+            <div class="field-error-text" id="userNameError">Full name is required.</div>
+          </div>
+
+          <!-- DOB -->
+          <div class="form-group">
+            <label class="form-label" for="userDob">Date of Birth <span class="required-star">*</span></label>
+            <input 
+              type="date" 
+              id="userDob" 
+              class="input-field" 
+              required
+            >
+            <div class="field-error-text" id="userDobError">Date of birth is required.</div>
+          </div>
+
+          <!-- Gender -->
+          <div class="form-group">
+            <label class="form-label" for="userGender">Gender <span class="required-star">*</span></label>
+            <select id="userGender" class="input-field empty" required>
+              <option value="" disabled selected>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="field-error-text" id="userGenderError">Please select a gender.</div>
+          </div>
+
+          <!-- City -->
+          <div class="form-group form-full-width">
+            <label class="form-label" for="userCity">City <span class="required-star">*</span></label>
+            <input 
+              type="text" 
+              id="userCity" 
+              class="input-field" 
+              placeholder="e.g. Mumbai" 
+              required
+            >
+            <div class="field-error-text" id="userCityError">City is required.</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3. INSTAGRAM REEL LINKS (LOCKED BY DEFAULT) -->
+      <section class="form-section-card form-locked" id="reelsLinksCard">
+        <h2 class="section-title">Instagram Reel Links</h2>
+        <span class="section-subtitle">Add at least one public Instagram Reel URL.</span>
+        
+        <div class="reels-list-container" id="reelsList">
+          <!-- Dynamic Reel URL Inputs generated dynamically by JS, starting with one initially -->
+          <div class="reel-input-row" data-index="0">
+            <div class="form-group" style="flex: 1; margin-bottom: 0;">
+              <input 
+                type="url" 
+                class="input-field reel-url-input" 
+                placeholder="https://www.instagram.com/reel/..." 
+                required
+              >
+              <div class="field-error-text reel-error-msg">This field is required.</div>
             </div>
-
-            <!-- Phone Number -->
-            <div class="filter-field">
-              <label class="filter-label">Phone Number *</label>
-              <input type="tel" class="input-control" id="addPhone" required placeholder="Enter phone number">
-            </div>
-
-            <!-- Gender -->
-            <div class="filter-field">
-              <label class="filter-label">Gender *</label>
-              <select class="input-control" id="addGender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <!-- Instagram Reel Link -->
-            <div class="filter-field form-full">
-              <label class="filter-label">Instagram Reel Link *</label>
-              <input type="url" class="input-control" id="addIgLink" required placeholder="https://instagram.com/reel/...">
-            </div>
-
-            <!-- City (Searchable Select) -->
-            <div class="filter-field">
-              <label class="filter-label">City *</label>
-              <div class="searchable-select" id="cityModal">
-                <div class="select-trigger" id="cityModalTrigger">Select City</div>
-                <div class="select-dropdown">
-                  <div class="select-search-container">
-                    <input type="text" class="select-search-input" id="cityModalSearch" placeholder="Search city...">
-                  </div>
-                  <ul class="select-options-list" id="cityModalOptions">
-                    <!-- Populated by Javascript -->
-                  </ul>
-                </div>
-                <input type="hidden" id="cityModalValue" required value="">
-              </div>
-            </div>
-
-
-
-            <!-- Date of Birth -->
-            <div class="filter-field">
-              <label class="filter-label">Date of Birth (DOB) *</label>
-              <input type="date" class="input-control" id="addDob" required>
-            </div>
-
-            <!-- Age (Calculated) -->
-            <div class="filter-field">
-              <label class="filter-label">Calculated Age</label>
-              <input type="number" class="input-control" id="addAge" placeholder="Calculates from DOB" readonly disabled>
-              <div class="validation-error-text" id="ageValidationError">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                <span>Age must be between 18 and 36 years old.</span>
-              </div>
-            </div>
-
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn-secondary" id="cancelModalBtn">Cancel</button>
-          <button type="submit" class="btn-primary" id="submitModalBtn">Save Registration</button>
+
+        <button type="button" class="btn-action btn-secondary btn-add-reel" id="addReelBtn">
+          + Add another reel
+        </button>
+      </section>
+
+      <!-- 4. DECLARATION & SUBMIT (LOCKED BY DEFAULT) -->
+      <section class="form-section-card form-locked" id="submitCard">
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="declarationCheck" class="checkbox-input" required>
+            <span class="checkbox-text">
+              I confirm that the information provided is accurate and the reel links belong to my Instagram account.
+            </span>
+          </label>
+          <div class="field-error-text" id="declarationError" style="margin-left: 28px;">
+            Please confirm the declaration.
+          </div>
         </div>
-      </form>
+      </section>
+
+      <!-- Main Form Submit Action Button -->
+      <button type="submit" class="btn-action btn-submit-wide" id="submitRegistrationBtn" disabled>
+        <span class="spinner"></span>
+        <span class="btn-text">Submit Registration</span>
+      </button>
+
+      <p class="testing-tip" style="margin-top: 16px; margin-bottom: 32px;">
+        Only public Instagram reels are supported.
+      </p>
+
+    </form>
+
+    <!-- Testing tip details -->
+    <div class="testing-tip" id="testingTip">
+      Tip: Enter any 10-digit number and OTP <span class="testing-tip-highlight">1234</span> to verify phone.
     </div>
+
   </div>
 
-  <script src="app.js"></script>
+  <script src="login-app.js"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static frontend files (login.html, index.html, style.css, etc.)
+// Serve static frontend files (index.html, admin.html, style.css, etc.)
 app.use(express.static(path.join(__dirname, './')));
 
 // API Routes
@@ -22,12 +22,12 @@ app.use('/api', otpRoutes);
 
 // Root fallback (redirects normal users to login page by default)
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'login.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Admin Dashboard route mapping helper
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'admin.html'));
 });
 
 // Database Connection Structure (Placeholder connection)
