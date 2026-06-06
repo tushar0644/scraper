@@ -318,22 +318,56 @@ document.addEventListener('DOMContentLoaded', () => {
     submitRegistrationBtn.classList.add('loading');
     submitRegistrationBtn.disabled = true;
 
-    // Simulate saveSubmission and scrapeReels call
-    setTimeout(() => {
+    // Collect Reel URLs from input elements
+    const reelUrls = [];
+    const reelInputs = reelsList.querySelectorAll('.reel-url-input');
+    reelInputs.forEach(input => {
+      const val = input.value.trim();
+      if (val) reelUrls.push(val);
+    });
+
+    const payload = {
+      name: userName.value.trim(),
+      phone: phoneInput.value.trim(),
+      dob: userDob.value,
+      gender: userGender.value,
+      city: userCity.value.trim(),
+      reelUrls: reelUrls
+    };
+
+    fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
       submitRegistrationBtn.classList.remove('loading');
-      
-      // Render success screen (exact replica of React FormPage submitted state)
-      const mainAppContainer = document.querySelector('.main-app-container');
-      mainAppContainer.innerHTML = `
-        <div style="background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px; max-width: 440px; margin: 80px auto; text-align: center; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);">
-          <p style="font-size: 3rem; color: #10b981; margin-bottom: 24px; line-height: 1;">✓</p>
-          <h2 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: #111827; margin-bottom: 8px;">Submission received</h2>
-          <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.5; padding: 0 10px;">
-            Your registration has been submitted. Our team will follow up shortly.
-          </p>
-        </div>
-      `;
-    }, 1500);
+      if (data.success) {
+        // Render success screen (exact replica of React FormPage submitted state)
+        const mainAppContainer = document.querySelector('.main-app-container');
+        mainAppContainer.innerHTML = `
+          <div style="background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 48px; max-width: 440px; margin: 80px auto; text-align: center; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.05);">
+            <p style="font-size: 3rem; color: #10b981; margin-bottom: 24px; line-height: 1;">✓</p>
+            <h2 style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: #111827; margin-bottom: 8px;">Submission received</h2>
+            <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.5; padding: 0 10px;">
+              Your registration has been submitted. Our team will follow up shortly.
+            </p>
+          </div>
+        `;
+      } else {
+        submitRegistrationBtn.disabled = false;
+        alert(data.message || 'Failed to submit registration. Please try again.');
+      }
+    })
+    .catch(err => {
+      submitRegistrationBtn.classList.remove('loading');
+      submitRegistrationBtn.disabled = false;
+      console.error('Submission error:', err);
+      alert('Network error occurred. Please try again.');
+    });
 
   });
 

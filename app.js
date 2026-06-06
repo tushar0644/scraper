@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <td>${reg.dobFormatted}</td>
         <td>${reg.age}</td>
         <td>
-          <button class="btn-delete" style="background: none; border: none; cursor: pointer; color: var(--danger); padding: 4px; display: inline-flex; border-radius: var(--border-radius-sm);" title="Delete Registration" data-no="${reg.no}">
+          <button class="btn-delete" style="background: none; border: none; cursor: pointer; color: var(--danger); padding: 4px; display: inline-flex; border-radius: var(--border-radius-sm);" title="Delete Registration" data-id="${reg._id}">
             <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
           </button>
         </td>
@@ -311,14 +311,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const deleteButtons = tableBody.querySelectorAll('.btn-delete');
     deleteButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const no = parseInt(btn.getAttribute('data-no'));
-        registrations = registrations.filter(r => r.no !== no);
+        const id = btn.getAttribute('data-id');
         
-        registrations.forEach((r, idx) => {
-          r.no = idx + 1;
-        });
-
-        applyFilters();
+        if (confirm("Are you sure you want to delete this registration?")) {
+          fetch(`/api/registrations/${id}`, {
+            method: 'DELETE'
+          })
+          .then(res => res.json())
+          .then(resData => {
+            if (resData.success) {
+              fetchRegistrations();
+            } else {
+              alert(resData.message || 'Failed to delete registration.');
+            }
+          })
+          .catch(err => {
+            console.error('Delete error:', err);
+            alert('Failed to delete registration.');
+          });
+        }
       });
     });
 
@@ -333,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const phone = document.getElementById('addPhone').value.trim();
     const gender = document.getElementById('addGender').value;
     const igLink = document.getElementById('addIgLink').value.trim();
-    const city = document.getElementById('cityModalValue').value;
+    const city = document.getElementById('cityValue').value || document.getElementById('cityModalValue').value;
     const dob = addDobInput.value;
     const age = parseInt(addAgeInput.value);
 
@@ -348,33 +359,39 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const dobDate = new Date(dob);
-    const day = String(dobDate.getDate()).padStart(2, '0');
-    const month = String(dobDate.getMonth() + 1).padStart(2, '0');
-    const year = dobDate.getFullYear();
-    const dobFormatted = `${day}/${month}/${year}`;
-
-    const newRecord = {
-      no: registrations.length + 1,
-      gender,
+    const payload = {
       name,
       phone,
-      igLink,
-      city,
       dob,
-      dobFormatted,
-      age
+      gender,
+      city,
+      reelUrls: [igLink]
     };
 
-    registrations.push(newRecord);
-    
-    filterForm.reset();
-    if (filterCityDropdown) {
-      filterCityDropdown.reset();
-    }
-    
-    renderTable(registrations);
-    closeModal();
+    fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(res => res.json())
+    .then(resData => {
+      if (resData.success) {
+        filterForm.reset();
+        if (filterCityDropdown) {
+          filterCityDropdown.reset();
+        }
+        fetchRegistrations();
+        closeModal();
+      } else {
+        alert(resData.message || 'Failed to add registration.');
+      }
+    })
+    .catch(err => {
+      console.error('Error adding registration:', err);
+      alert('Failed to add registration.');
+    });
   });
 
   // --- Table Filtering Logic ---
@@ -504,6 +521,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Fetch registrations from backend database
+  function fetchRegistrations() {
+    fetch('/api/registrations')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          registrations = data.registrations;
+          renderTable(registrations);
+        }
+      })
+      .catch(err => {
+        console.error('Error fetching registrations:', err);
+      });
+  }
+
   // Initial table render
-  renderTable(registrations);
+  fetchRegistrations();
 });
